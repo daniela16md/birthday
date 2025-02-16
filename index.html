@@ -75,6 +75,17 @@
             font-weight: bold;
             color: darkcyan;
         }
+        button {
+            position: fixed;
+            padding: 10px 20px;
+            font-size: 12px;
+            background-color: darkcyan;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            bottom: 40px;
+        }
     </style>
 </head>
 <body>
@@ -83,6 +94,8 @@
         <source src="musique_anniversaire.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas l'audio.
     </audio>
+
+    <button id="music-button" onclick="toggleMusic()">Lancer la musique</button>
 
     <div class="anniversaire-container">
         <div class="smiley top-left" id="smiley1" onclick="changeMessage(1)">😊</div>
@@ -109,6 +122,20 @@
         function changeMessage(id) {
             const messageElement = document.getElementById('message-text');
             messageElement.innerText = messages[id - 1]; 
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById('background-music');
+            const button = document.getElementById('music-button');
+
+            if (music.paused) {
+                music.play();  
+                button.innerText = "Stop musique"; 
+            } 
+            else {
+                music.pause(); 
+                button.innerText = "Lancer la musique"; 
+            }
         }
     </script>
 
