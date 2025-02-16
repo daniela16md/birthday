@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un merveilleux anniversaire à toi !</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(238, 238, 211);
+            color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .anniversaire-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+        }
+
+        .smiley {
+            position: absolute;
+            font-size: 30px;
+            cursor: pointer; 
+        }
+
+        .top-left {
+            top: 10px;
+            left: 10px;
+        }
+
+        .top {
+            top: -10px;
+        }
+
+        .top-right {
+            top: 10px;
+            right: 10px;
+        }
+
+        .right {
+            right: -40px;
+        }
+
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .bottom {
+            bottom: -10px;
+        }
+
+        .bottom-left {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .left {
+            left: -40px;
+        }
+
+        .center-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="background-music" autoplay loop>
+        <source src="musique_anniversaire.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'audio.
+    </audio>
+
+    <div class="anniversaire-container">
+        <div class="smiley top-left" id="smiley1" onclick="changeMessage(1)">😊</div>
+        <div class="smiley top" id="smiley2" onclick="changeMessage(2)">😊</div>
+        <div class="smiley top-right" id="smiley3" onclick="changeMessage(3)">😊</div>
+        <div class="smiley right" id="smiley4" onclick="changeMessage(4)">😊</div>
+        <div class="smiley bottom-right" id="smiley5" onclick="changeMessage(5)">😊</div>
+        <div class="smiley bottom" id="smiley6" onclick="changeMessage(6)">😊</div>
+        <div class="smiley bottom-left" id="smiley7" onclick="changeMessage(7)">😊</div>
+        <div class="smiley left" id="smiley8" onclick="changeMessage(8)">😊</div>
+        <div class="center-text" id="message-text">Joyeux anniversaire !🎂</div>
+    </div>
+
+    <script>
+        const messages = [
+            "Et toi qui pensais que je serais plus là pour ton anniversaire ! 👫 ",
+            "Que la joie et la positivité t'accompagnent à chaque pas que tu fais! 🤗",
+            "Chaque journée est une nouvelle page de ton histoire, écris-la avec des rires et de l’amour ! 📖💖 ",
+            "Rappelle-toi que tu es capable de réaliser de grandes choses! 😄" ,
+            "Que Dieu bénisse ce jour avec plus d'amour que ton cœur ne peut en contenir.🙏",
+            "Que tu sois protégé et heureux chaque jour à venir. 🌟",
+            "Que l'Eternel veille sur toi 🕊️",
+            "Souris chaque jour, parce que tu mérites d’être heureux ! 😄"
+        ];
+
+        function changeMessage(id) {
+            const messageElement = document.getElementById('message-text');
+            messageElement.innerText = messages[id - 1]; 
+        }
+    </script>
+
+</body>
+</html>
