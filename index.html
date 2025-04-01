@@ -1,143 +1,112 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Un merveilleux anniversaire à toi !</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: rgb(238, 238, 211);
-            color: #444;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recette de Gâteau Délicieux !</title>
+  <!-- Metas pour le partage sur les réseaux sociaux -->
+  <meta property="og:title" content="Recette de Gâteau Délicieux !" />
+  <meta property="og:description" content="Clique ici pour découvrir la recette de gâteau !" />
+  <meta property="og:image" content="images/gateau.jpg" />
+  <meta property="og:url" content="https://votre-site.com" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Poisson d'Avril !" />
+  <meta name="twitter:description" content="Recette de Gâteau Délicieux !" />
+  <meta name="twitter:image" content="images/gateau.jpg">
+  
+  <!-- Schema.org JSON-LD pour améliorer l'affichage dans les moteurs de recherche -->
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Recipe",
+      "name": "Recette de Gâteau Délicieux",
+      "image": "images/gateau.jpg",
+      "description": "Cliquez pour la recette de gâteau délicieux.",
+      "author": {
+        "@type": "Person",
+        "name": "Ton Nom"
+      },
+      "datePublished": "2025-04-01",
+      "keywords": "Gâteau, Recette"
+    }
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
 
-        .anniversaire-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-        }
+    .container {
+      text-align: center;
+    }
 
-        .smiley {
-            position: absolute;
-            font-size: 30px;
-            cursor: pointer; 
-        }
+    .cake-image {
+      width: 300px;
+      height: auto;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      border-radius: 20px;
+    }
 
-        .top-left {
-            top: 30px;
-            left: -10px;
-        }
+    h2 {
+      cursor: pointer; 
+      color: #333;
+      transition: color 0.3s ease;
+    }
 
-        .top {
-            top: -10px;
-        }
+    h2:hover {
+      color: #007bff; 
+    }
 
-        .top-right {
-            top: 30px;
-            right: 10px;
-        }
+    .hidden {
+      display: none;
+    }
 
-        .right {
-            right: -40px;
-        }
-
-        .bottom-right {
-            bottom: 10px;
-            right: 40px;
-        }
-
-        .bottom {
-            bottom: 10px;
-            left: 40px;
-        }
-
-        .bottom-left {
-            bottom: 10px;
-            left: 10px;
-        }
-
-        .left {
-            left: -40px;
-        }
-
-        .center-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: darkcyan;
-        }
-        button {
-            position: fixed;
-            padding: 10px 20px;
-            font-size: 12px;
-            background-color: darkcyan;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            bottom: 40px;
-        }
-    </style>
+    .photo-image {
+      width: 300px;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 20px;
+    }
+  </style>
 </head>
 <body>
 
-    <audio id="background-music" autoplay loop>
-        <source src="musique_anniversaire.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'audio.
-    </audio>
+  <div class="container">
+    <a href="#" id="prank-link">
+      <img src="images/gateau.jpg" alt="Gâteau délicieux" class="cake-image" id="gateau-img" />
+      <h2 id="gateau-text">Recette de Gâteau Délicieux !</h2>
+    </a>
+  </div>
 
-    <button id="music-button" onclick="toggleMusic()">Lancer la musique</button>
+  <div id="message" class="hidden">
+    <img src="images/photo.jpg" alt="Poisson d'Avril !" class="photo-image" />
+    <p>Poisson d'Avril ! 🎉</p>
+  </div>
 
-    <div class="anniversaire-container">
-        <div class="smiley top-left" id="smiley1" onclick="changeMessage(1)">😊</div>
-        <div class="smiley top" id="smiley2" onclick="changeMessage(2)">😊</div>
-        <div class="smiley top-right" id="smiley3" onclick="changeMessage(3)">😊</div>
-        <div class="smiley right" id="smiley4" onclick="changeMessage(4)">😊</div>
-        <div class="smiley bottom-right" id="smiley5" onclick="changeMessage(5)">😊</div>
-        <div class="smiley bottom" id="smiley6" onclick="changeMessage(6)">😊</div>
-        <div class="smiley left" id="smiley8" onclick="changeMessage(7)">😊</div>
-        <div class="center-text" id="message-text">Joyeux anniversaire !🎂</div>
-    </div>
+  <script>
+    const gateauImage = document.getElementById('gateau-img');
+    const gateauText = document.getElementById('gateau-text');
+    const message = document.getElementById('message');
 
-    <script>
-        const messages = [
-            "Et toi qui pensais que je serais plus là pour ton anniversaire ! 👫 ",
-            "Que la joie et la positivité t'accompagnent à chaque pas que tu fais! 🤗",
-            "Chaque journée est une nouvelle page de ton histoire, écris-la avec des rires et de l’amour ! 📖💖 ",
-            "Rappelle-toi que tu es capable de réaliser de grandes choses! 😄" ,
-            "Que Dieu bénisse ce jour avec plus d'amour que ton cœur ne peut en contenir.🙏",
-            "Que tu sois protégé et heureux chaque jour à venir. 🌟",
-            "Souris chaque jour, parce que tu mérites d’être heureux ! 😄"
-        ];
+    const handleClick = (event) => {
+      event.preventDefault(); 
 
-        function changeMessage(id) {
-            const messageElement = document.getElementById('message-text');
-            messageElement.innerText = messages[id - 1]; 
-        }
+      gateauImage.style.opacity = 0;
+      gateauText.style.opacity = 0;
 
-        function toggleMusic() {
-            const music = document.getElementById('background-music');
-            const button = document.getElementById('music-button');
+      message.classList.remove('hidden');
+    };
 
-            if (music.paused) {
-                music.play();  
-                button.innerText = "Stop musique"; 
-            } 
-            else {
-                music.pause(); 
-                button.innerText = "Lancer la musique"; 
-            }
-        }
-    </script>
+    gateauImage.addEventListener('click', handleClick);
+    gateauText.addEventListener('click', handleClick);
+  </script>
 
 </body>
 </html>
